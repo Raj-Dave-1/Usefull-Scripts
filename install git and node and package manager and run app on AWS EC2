@@ -1,0 +1,79 @@
+#!/bin/bash
+sudo yum update -y
+
+sudo yum install git -y
+
+git clone https://github.com/Raj-Dave-TS/devops-demo-nodeapp-1.git
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
+. ~/.nvm/nvm.sh
+
+nvm install node
+
+npm install -g typescript
+npm install -g pm2
+
+cd devops-demo-nodeapp-1/backend/
+npm i
+cd~
+
+cd devops-demo-nodeapp-1/front-end/
+npm i
+cd ~
+
+tsc -p devops-demo-nodeapp-1/backend/
+tsc -p devops-demo-nodeapp-1/front-end/
+
+pm2 start devops-demo-nodeapp-1/backend/dist/app.js
+pm2 start devops-demo-nodeapp-1/front-end/ npm -- start#!/bin/bash
+cd ~
+
+sudo yum update -y
+
+sudo yum install git -y
+
+git clone https://github.com/Raj-Dave-TS/devops-demo-nodeapp-1.git
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
+
+. ~/.nvm/nvm.sh
+
+nvm install node
+
+npm install -g typescript
+npm install -g pm2
+
+cd devops-demo-nodeapp-1/backend/
+npm i
+cd~
+
+cd devops-demo-nodeapp-1/front-end/
+npm i
+cd ~
+
+export MONGO_DB_URI="YOUR DATABAE URL"
+
+tsc -p devops-demo-nodeapp-1/backend/
+
+pm2 start devops-demo-nodeapp-1/backend/dist/app.js
+
+
+cd devops-demo-nodeapp-1/backend/
+pm2 start npm --name "backend" -- start
+cd ~
+
+cd devops-demo-nodeapp-1/front-end/
+pm2 start npm --name "frontend" -- start
+cd ~
+
+pm2 serve build/ 4000 --name "react-build" --spa
+
+
+
+
+
+
+
+
+
+
